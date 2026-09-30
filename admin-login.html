@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login - CampusHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="navbar">
+    <div class="logo">🏫 CampusHub</div>
+    <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="issues.html">Issues</a>
+        <a href="report.html">Report</a>
+        <a href="about.html">About</a>
+        <a href="login.html" class="login-button active">Login</a>
+    </nav>
+</header>
+
+<main class="auth-page">
+<section class="auth-card admin-auth-card">
+    <div class="admin-badge">ADMIN</div>
+    <p class="section-label">ADMINISTRATION</p>
+    <h1>Admin Login</h1>
+    <p class="auth-subtitle">Sign in to review and manage student complaints.</p>
+
+    <form id="adminLoginForm">
+        <div class="auth-field">
+            <label for="adminUsername">Admin Username</label>
+            <input id="adminUsername" type="text" placeholder="Enter admin username" required>
+        </div>
+        <div class="auth-field">
+            <label for="adminPassword">Admin Password</label>
+            <input id="adminPassword" type="password" placeholder="Enter admin password" required>
+        </div>
+        <p id="adminError" class="auth-error"></p>
+        <button type="submit" class="primary-btn auth-submit">Enter Admin Panel</button>
+    </form>
+
+    <a href="login.html" class="back-login-link">← Back to Student Login</a>
+</section>
+</main>
+
+<footer><p>© 2026 CampusHub. Built for a better campus.</p></footer>
+
+<script>
+document.getElementById("adminLoginForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const username = document.getElementById("adminUsername").value.trim();
+    const password = document.getElementById("adminPassword").value;
+    const error = document.getElementById("adminError");
+
+    if (username === "admin" && password === "admin123") {
+        sessionStorage.setItem("campusHubAdminLoggedIn", "true");
+        sessionStorage.setItem("campusHubAdminName", username);
+        window.location.href = "admin.html";
+    } else {
+        error.textContent = "Invalid admin username or password.";
+    }
+});
+</script>
+</body>
+</html>
