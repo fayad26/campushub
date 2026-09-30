@@ -1,627 +1,2840 @@
-<!DOCTYPE html>
-<html lang="en">
+/* =========================================================
+   CAMPUSHUB
+   Professional Green + Black + White Theme
+========================================================= */
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
-    <title>CampusHub</title>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: #f7f9f7;
+    color: #18201b;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   COLORS
+========================================================= */
+
+:root {
+    --green: #52745a;
+    --green-dark: #3f5f47;
+    --green-light: #e8f0e9;
+
+    --black: #171e19;
+    --dark: #202922;
+
+    --text: #3d4941;
+    --muted: #758079;
+
+    --white: #ffffff;
+    --background: #f7f9f7;
+
+    --border: #dfe6e0;
+
+    --shadow-small: 0 3px 12px rgba(20, 35, 24, 0.05);
+    --shadow: 0 10px 30px rgba(20, 35, 24, 0.08);
+}
+
+
+/* =========================================================
+   GLOBAL TYPOGRAPHY
+========================================================= */
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Poppins", sans-serif;
+    color: var(--black);
+}
+
+.small-title {
+    color: var(--green);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+    height: 72px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.97);
+    border-bottom: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    <link rel="stylesheet" href="style.css">
+    padding: 0 7%;
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-</head>
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 
-<body>
+    backdrop-filter: blur(10px);
+}
 
-    <!-- ================= NAVBAR ================= -->
+.logo {
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--black);
+    white-space: nowrap;
+}
 
-    <header class="navbar">
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
 
-        <div class="logo">
-            🏫 CampusHub
-        </div>
+.nav-links a {
+    text-decoration: none;
+    color: #68736c;
+    font-size: 12px;
+    font-weight: 500;
 
-        <nav class="nav-links">
+    transition: 0.2s ease;
+}
 
-            <a href="index.html" class="active">
-                Home
-            </a>
+.nav-links a:hover {
+    color: var(--green);
+}
 
-            <a href="issues.html">
-                Issues
-            </a>
+.nav-links a.active {
+    color: var(--green);
+    font-weight: 700;
+}
 
-            <a href="report.html">
-                Report
-            </a>
+.nav-links .login-button {
+    background: var(--black);
+    color: white;
 
-            <a href="about.html">
-                About
-            </a>
+    padding: 9px 17px;
+    border-radius: 6px;
+}
 
-            <a href="login.html" class="login-button">
-                Login
-            </a>
+.nav-links .login-button:hover {
+    background: var(--green);
+    color: white;
+}
 
-        </nav>
 
-    </header>
+/* =========================================================
+   BUTTONS
+========================================================= */
 
+.primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    <!-- ================= HERO ================= -->
+    background: var(--black);
+    color: white;
 
-    <section class="hero">
+    padding: 12px 19px;
 
-        <div class="hero-content">
+    border: 1px solid var(--black);
+    border-radius: 6px;
 
-            <p class="small-title">
-                A BETTER CAMPUS STARTS WITH A REPORT
-            </p>
+    text-decoration: none;
 
-            <h1>
-                Report problems.<br>
-                <span>Track the change.</span>
-            </h1>
+    font-size: 12px;
+    font-weight: 600;
 
-            <p class="hero-text">
-                CampusHub gives students a simple way to report
-                problems around campus and follow them from
-                submission to resolution.
-            </p>
+    transition: 0.2s ease;
+}
 
-            <div class="hero-buttons">
+.primary-button:hover {
+    background: var(--green);
+    border-color: var(--green);
+    transform: translateY(-2px);
+}
 
-                <a href="report.html" class="primary-button">
-                    Report an Issue
-                </a>
+.secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-                <a href="issues.html" class="secondary-button">
-                    View Issues
-                </a>
+    background: white;
+    color: var(--black);
 
-            </div>
+    padding: 12px 19px;
 
-        </div>
+    border: 1px solid #d3dbd4;
+    border-radius: 6px;
 
+    text-decoration: none;
 
-        </div>
+    font-size: 12px;
+    font-weight: 600;
 
-    </section>
+    transition: 0.2s ease;
+}
 
+.secondary-button:hover {
+    border-color: var(--green);
+    color: var(--green);
+    transform: translateY(-2px);
+}
 
 
-    <!-- ================= INTRO ================= -->
+/* =========================================================
+   HERO
+========================================================= */
 
-    <section class="intro">
+.hero {
+    min-height: 560px;
 
-        <p class="small-title">
-            WHY CAMPUSHUB?
-        </p>
+    background:
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(82, 116, 90, 0.10),
+            transparent 30%
+        ),
+        #e9f0ea;
 
-        <h2>
-            Problems shouldn't disappear<br>
-            after they're reported.
-        </h2>
+    padding: 95px 7%;
 
-        <p>
-            CampusHub creates a transparent connection between
-            students and campus administration.
-        </p>
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    </section>
+    position: relative;
+    overflow: hidden;
+}
 
+.hero::after {
+    content: "";
 
+    position: absolute;
+    width: 350px;
+    height: 350px;
 
-    <!-- ================= FEATURES ================= -->
+    border-radius: 50%;
 
-    <section class="features">
+    border: 1px solid rgba(82, 116, 90, 0.12);
 
-        <div class="feature-card">
+    right: -120px;
+    bottom: -150px;
+}
 
-            <div class="feature-icon">
-                📝
-            </div>
+.hero-content {
+    max-width: 670px;
+    position: relative;
+    z-index: 2;
+}
 
-            <h3>
-                Easy Reporting
-            </h3>
+.hero h1 {
+    font-size: 56px;
+    line-height: 1.08;
 
-            <p>
-                Report problems around campus in just a few
-                simple steps.
-            </p>
+    letter-spacing: -1.8px;
 
-        </div>
+    margin-bottom: 22px;
+}
 
+.hero h1 span {
+    color: var(--green);
+}
 
-        <div class="feature-card">
+.hero-text {
+    max-width: 560px;
 
-            <div class="feature-icon">
-                🔎
-            </div>
+    color: #647168;
 
-            <h3>
-                Track Progress
-            </h3>
+    font-size: 14px;
+    line-height: 1.8;
 
-            <p>
-                See exactly what stage your complaint
-                is currently in.
-            </p>
+    margin-bottom: 28px;
+}
 
-        </div>
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
 
-        <div class="feature-card">
+/* =========================================================
+   INTRO
+========================================================= */
 
-            <div class="feature-icon">
-                👁️
-            </div>
+.intro {
+    background: white;
 
-            <h3>
-                Stay Informed
-            </h3>
+    text-align: center;
 
-            <p>
-                Students can see updates instead of
-                wondering what happened.
-            </p>
+    padding: 90px 25px 45px;
+}
 
-        </div>
+.intro h2 {
+    font-size: 34px;
+    line-height: 1.25;
 
+    letter-spacing: -0.7px;
 
-        <div class="feature-card">
+    margin-bottom: 15px;
+}
 
-            <div class="feature-icon">
-                🤝
-            </div>
+.intro > p:last-child {
+    max-width: 620px;
 
-            <h3>
-                Build Better
-            </h3>
+    margin: auto;
 
-            <p>
-                Small reports can lead to meaningful
-                improvements across campus.
-            </p>
+    color: var(--muted);
 
-        </div>
+    font-size: 13px;
+}
 
-    </section>
 
+/* =========================================================
+   FEATURES
+========================================================= */
 
+.features {
+    max-width: 1200px;
 
-    <!-- ================= HOW IT WORKS ================= -->
+    margin: auto;
 
-    <section class="how-it-works">
+    background: white;
 
-        <div class="section-heading">
+    padding: 30px 7% 90px;
 
-            <p class="small-title">
-                HOW IT WORKS
-            </p>
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 
-            <h2>
-                From complaint to change.
-            </h2>
+    gap: 16px;
+}
 
-        </div>
+.feature-card {
+    background: #f8faf8;
 
+    border: 1px solid #e3e9e4;
 
-        <div class="steps">
+    border-radius: 9px;
 
-            <div class="step">
+    padding: 27px;
 
-                <div class="step-number">
-                    01
-                </div>
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
 
-                <h3>
-                    Report
-                </h3>
+.feature-card:hover {
+    transform: translateY(-5px);
 
-                <p>
-                    Students submit a problem with
-                    its location and details.
-                </p>
+    border-color: #cbd8cd;
 
-            </div>
+    box-shadow: var(--shadow);
+}
 
+.feature-icon {
+    width: 42px;
+    height: 42px;
 
-            <div class="step">
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-                <div class="step-number">
-                    02
-                </div>
+    background: var(--green-light);
 
-                <h3>
-                    Review
-                </h3>
+    border-radius: 8px;
 
-                <p>
-                    The administration reviews the
-                    reported issue.
-                </p>
+    font-size: 20px;
 
-            </div>
+    margin-bottom: 18px;
+}
 
+.feature-card h3 {
+    font-size: 16px;
 
-            <div class="step">
+    margin-bottom: 7px;
+}
 
-                <div class="step-number">
-                    03
-                </div>
+.feature-card p {
+    color: var(--muted);
 
-                <h3>
-                    Schedule
-                </h3>
+    font-size: 11px;
 
-                <p>
-                    Necessary work is scheduled
-                    based on priority.
-                </p>
+    line-height: 1.7;
+}
 
-            </div>
 
+/* =========================================================
+   HOW IT WORKS
+========================================================= */
 
-            <div class="step">
+.how-it-works {
+    background: var(--background);
 
-                <div class="step-number">
-                    04
-                </div>
+    padding: 90px 7%;
+}
 
-                <h3>
-                    Resolve
-                </h3>
+.section-heading {
+    text-align: center;
+}
 
-                <p>
-                    The problem is fixed and the
-                    status is updated.
-                </p>
+.section-heading h2 {
+    font-size: 34px;
 
-            </div>
+    letter-spacing: -0.7px;
+}
 
-        </div>
+.steps {
+    max-width: 1100px;
 
-    </section>
+    margin: 48px auto 0;
 
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 
+    gap: 16px;
+}
 
-    <!-- ================= TRANSPARENCY ================= -->
+.step {
+    background: white;
 
-    <section class="transparency">
+    border: 1px solid var(--border);
 
-        <div class="transparency-heading">
+    border-radius: 9px;
 
-            <p class="small-title">
-                TRANSPARENCY
-            </p>
+    padding: 27px;
 
-            <h2>
-                Every issue has a journey.
-            </h2>
+    min-height: 190px;
 
-            <p>
-                CampusHub makes the progress of a complaint
-                visible from the moment it is reported.
-            </p>
+    position: relative;
 
-        </div>
+    transition: 0.2s ease;
+}
 
+.step:hover {
+    transform: translateY(-4px);
 
-        <div class="issue-preview">
+    box-shadow: var(--shadow);
 
-            <div class="issue-preview-header">
+    border-color: #ccd8ce;
+}
 
-                <div>
+.step-number {
+    font-family: "Poppins", sans-serif;
 
-                    <span class="issue-number">
-                        SAMPLE ISSUE
-                    </span>
+    color: #d5dfd7;
 
-                    <h3>
-                        Water leakage near hostel
-                    </h3>
+    font-size: 27px;
 
-                    <p>
-                        📍 Hostel Block
-                    </p>
+    font-weight: 700;
 
-                </div>
+    margin-bottom: 17px;
+}
 
-                <span class="status progress">
-                    In Progress
-                </span>
+.step h3 {
+    font-size: 16px;
 
-            </div>
+    margin-bottom: 7px;
+}
 
+.step p {
+    color: var(--muted);
 
-            <div class="timeline">
+    font-size: 11px;
 
-                <div class="timeline-item completed">
+    line-height: 1.7;
+}
 
-                    <div class="timeline-dot">
-                        ✓
-                    </div>
 
-                    <div>
+/* =========================================================
+   TRANSPARENCY
+========================================================= */
 
-                        <h4>
-                            Reported
-                        </h4>
+.transparency {
+    background: white;
 
-                        <p>
-                            Issue submitted by student
-                        </p>
+    padding: 95px 7%;
 
-                    </div>
+    display: flex;
 
-                </div>
+    justify-content: center;
+    align-items: center;
 
+    gap: 90px;
+}
 
-                <div class="timeline-item completed">
+.transparency-heading {
+    max-width: 470px;
+}
 
-                    <div class="timeline-dot">
-                        ✓
-                    </div>
+.transparency-heading h2 {
+    font-size: 35px;
 
-                    <div>
+    line-height: 1.25;
 
-                        <h4>
-                            Under Review
-                        </h4>
+    letter-spacing: -0.8px;
 
-                        <p>
-                            Administration reviewed the issue
-                        </p>
+    margin-bottom: 14px;
+}
 
-                    </div>
+.transparency-heading > p:last-child {
+    color: var(--muted);
 
-                </div>
+    font-size: 13px;
 
+    line-height: 1.8;
+}
 
-                <div class="timeline-item active">
 
-                    <div class="timeline-dot">
-                        ●
-                    </div>
+/* =========================================================
+   ISSUE PREVIEW
+========================================================= */
 
-                    <div>
+.issue-preview {
+    width: 460px;
 
-                        <h4>
-                            In Progress
-                        </h4>
+    background: #fafcfa;
 
-                        <p>
-                            Maintenance work is underway
-                        </p>
+    border: 1px solid var(--border);
 
-                    </div>
+    border-radius: 10px;
 
-                </div>
+    padding: 27px;
 
+    box-shadow: var(--shadow);
+}
 
-                <div class="timeline-item">
+.issue-preview-header {
+    display: flex;
 
-                    <div class="timeline-dot">
-                        4
-                    </div>
+    justify-content: space-between;
+    align-items: flex-start;
 
-                    <div>
+    gap: 20px;
 
-                        <h4>
-                            Resolved
-                        </h4>
+    margin-bottom: 27px;
+}
 
-                        <p>
-                            Waiting for completion
-                        </p>
+.issue-number {
+    color: var(--green);
 
-                    </div>
+    font-size: 9px;
 
-                </div>
+    font-weight: 700;
 
-            </div>
+    letter-spacing: 1.2px;
+}
 
-        </div>
+.issue-preview-header h3 {
+    font-size: 16px;
 
-    </section>
+    line-height: 1.35;
 
+    margin: 5px 0;
+}
 
+.issue-preview-header p {
+    color: #89938d;
 
-    <!-- ================= LIVE STATISTICS ================= -->
+    font-size: 10px;
+}
 
-    <section class="stats">
 
-        <div class="stat-card">
+/* =========================================================
+   STATUS BADGE
+========================================================= */
 
-            <h2 id="homeTotalIssues">
-                0
-            </h2>
+.status {
+    display: inline-flex;
 
-            <p>
-                Issues Reported
-            </p>
+    align-items: center;
+    justify-content: center;
 
-        </div>
+    padding: 5px 10px;
 
+    border-radius: 5px;
 
-        <div class="stat-card">
+    font-size: 9px;
 
-            <h2 id="homeResolvedIssues">
-                0
-            </h2>
+    font-weight: 600;
 
-            <p>
-                Issues Resolved
-            </p>
+    white-space: nowrap;
+}
 
-        </div>
+.status.progress {
+    background: var(--green-light);
 
+    color: var(--green-dark);
+}
 
-        <div class="stat-card">
 
-            <h2 id="homeProgressIssues">
-                0
-            </h2>
+/* =========================================================
+   TIMELINE
+========================================================= */
 
-            <p>
-                Currently In Progress
-            </p>
+.timeline {
+    border-left: 1px solid #d8e1d9;
 
-        </div>
+    padding-left: 23px;
 
+    margin-left: 6px;
+}
 
-        <div class="stat-card">
+.timeline-item {
+    position: relative;
 
-            <h2 id="homeScheduledIssues">
-                0
-            </h2>
+    display: flex;
 
-            <p>
-                Scheduled
-            </p>
+    margin-bottom: 25px;
+}
 
-        </div>
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
 
-    </section>
+.timeline-dot {
+    position: absolute;
 
+    left: -29px;
+    top: 2px;
 
+    width: 12px;
+    height: 12px;
 
-    <!-- ================= CALL TO ACTION ================= -->
+    border-radius: 50%;
 
-    <section class="cta">
+    background: #dce2dd;
 
-        <div>
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-            <p class="small-title">
-                SEE SOMETHING?
-            </p>
+    color: white;
 
-            <h2>
-                Help make the campus better.
-            </h2>
+    font-size: 7px;
 
-            <p>
-                Your report could be the first step
-                towards fixing a problem.
-            </p>
+    border: 2px solid white;
+}
 
-        </div>
+.timeline-item.completed .timeline-dot {
+    background: var(--green);
+}
 
+.timeline-item.active .timeline-dot {
+    background: var(--black);
 
-        <a href="report.html" class="primary-button">
-            Report an Issue
-        </a>
+    box-shadow:
+        0 0 0 4px #e4ebe5;
+}
 
-    </section>
+.timeline-item h4 {
+    font-size: 11px;
 
+    margin-bottom: 2px;
+}
 
+.timeline-item p {
+    color: #919a94;
 
-    <!-- ================= FOOTER ================= -->
+    font-size: 9px;
 
-    <footer>
+    line-height: 1.5;
+}
 
-        <div class="footer-logo">
-            🏫 CampusHub
-        </div>
 
-        <p>
-            Making campus problems visible.
-        </p>
+/* =========================================================
+   LIVE STATISTICS
+========================================================= */
 
-        <div class="footer-links">
+.stats {
+    background: var(--background);
 
-            <a href="index.html">
-                Home
-            </a>
+    padding: 38px 7%;
 
-            <a href="issues.html">
-                Issues
-            </a>
+    display: grid;
 
-            <a href="report.html">
-                Report
-            </a>
+    grid-template-columns: repeat(4, 1fr);
+}
 
-            <a href="about.html">
-                About
-            </a>
+.stat-card {
+    text-align: center;
 
-        </div>
+    padding: 18px;
 
-        <p class="copyright">
-            © 2026 CampusHub
-        </p>
+    border-right: 1px solid #dce2dd;
+}
 
-    </footer>
+.stat-card:last-child {
+    border-right: none;
+}
 
+.stat-card h2 {
+    color: var(--green);
 
+    font-size: 31px;
 
-    <!-- ================= LIVE STATISTICS SCRIPT ================= -->
+    line-height: 1.2;
+}
 
-    <script>
+.stat-card p {
+    color: var(--muted);
 
-        const STORAGE_KEY = "campusHubIssuesV2";
+    font-size: 10px;
 
+    margin-top: 5px;
+}
 
-        function updateHomepageStats() {
 
-            const issues =
-                JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+/* =========================================================
+   CALL TO ACTION
+========================================================= */
 
+.cta {
+    background: var(--black);
 
-            // Total number of complaints
-            const total = issues.length;
+    color: white;
 
+    padding: 65px 7%;
 
-            // Resolved complaints
-            const resolved =
-                issues.filter(
-                    issue => issue.status === "resolved"
-                ).length;
+    display: flex;
 
+    align-items: center;
 
-            // Complaints currently being worked on
-            const progress =
-                issues.filter(
-                    issue => issue.status === "progress"
-                ).length;
+    justify-content: space-between;
 
+    gap: 30px;
+}
 
-            // Complaints that have been scheduled
-            const scheduled =
-                issues.filter(
-                    issue => issue.status === "scheduled"
-                ).length;
+.cta .small-title {
+    color: #a7c2ac;
+}
 
+.cta h2 {
+    color: white;
 
-            // Update the numbers on the page
-            document.getElementById("homeTotalIssues")
-                .textContent = total;
+    font-size: 30px;
 
-            document.getElementById("homeResolvedIssues")
-                .textContent = resolved;
+    line-height: 1.25;
 
-            document.getElementById("homeProgressIssues")
-                .textContent = progress;
+    margin-bottom: 7px;
+}
 
-            document.getElementById("homeScheduledIssues")
-                .textContent = scheduled;
+.cta p:not(.small-title) {
+    color: #adb7b0;
 
-        }
+    font-size: 12px;
+}
 
+.cta .primary-button {
+    background: white;
 
-        // Load the real complaint numbers
-        updateHomepageStats();
+    color: var(--black);
 
+    border-color: white;
 
-    </script>
+    white-space: nowrap;
+}
 
+.cta .primary-button:hover {
+    background: var(--green-light);
 
-</body>
+    border-color: var(--green-light);
 
-</html>
+    color: var(--black);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    background: #101511;
+
+    color: #7f8982;
+
+    text-align: center;
+
+    padding: 34px 20px 27px;
+
+    border-top: 1px solid #202820;
+}
+
+.footer-logo {
+    font-family: "Poppins", sans-serif;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    margin-bottom: 5px;
+}
+
+footer p {
+    font-size: 10px;
+}
+
+.footer-links {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 22px;
+
+    margin: 17px 0;
+}
+
+.footer-links a {
+    text-decoration: none;
+
+    color: #7f8982;
+
+    font-size: 10px;
+
+    transition: 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.copyright {
+    color: #59635c;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #202720;
+
+    max-width: 600px;
+
+    margin: auto;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .hero {
+        padding: 80px 6%;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .transparency {
+        gap: 50px;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .navbar {
+        height: auto;
+
+        padding: 16px 25px;
+
+        flex-direction: column;
+
+        gap: 14px;
+    }
+
+    .nav-links {
+        gap: 18px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .hero {
+        min-height: auto;
+
+        padding: 75px 25px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .transparency {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 75px 25px;
+    }
+
+    .issue-preview {
+        width: 100%;
+
+        max-width: 500px;
+    }
+
+    .cta {
+        padding: 55px 25px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .hero {
+        padding: 65px 22px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+
+        letter-spacing: -1px;
+    }
+
+    .hero-text {
+        font-size: 13px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        max-width: 260px;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+    }
+
+    .intro {
+        padding: 70px 22px 35px;
+    }
+
+    .intro h2 {
+        font-size: 28px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+
+        padding: 25px 22px 70px;
+    }
+
+    .how-it-works {
+        padding: 70px 22px;
+    }
+
+    .section-heading h2 {
+        font-size: 28px;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+
+        margin-top: 35px;
+    }
+
+    .transparency-heading h2 {
+        font-size: 29px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+
+        padding: 25px 15px;
+    }
+
+    .stat-card {
+        border-right: none;
+
+        border-bottom: 1px solid #dce2dd;
+    }
+
+    .stat-card:nth-child(3),
+    .stat-card:nth-child(4) {
+        border-bottom: none;
+    }
+
+    .cta h2 {
+        font-size: 26px;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    .nav-links {
+        gap: 9px;
+    }
+
+    .nav-links a {
+        font-size: 10px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card,
+    .stat-card:nth-child(3),
+    .stat-card:nth-child(4) {
+        border-right: none;
+        border-bottom: 1px solid #dce2dd;
+    }
+
+    .stat-card:last-child {
+        border-bottom: none;
+    }
+
+    .issue-preview {
+        padding: 20px;
+    }
+}
+/* =========================================================
+   CAMPUSHUB - ISSUES PAGE
+   Clean • Professional • Human-made
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: #f6f8f6;
+    color: #18201b;
+    line-height: 1.6;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+a {
+    color: inherit;
+}
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+    --green: #52745a;
+    --green-dark: #3f5f47;
+    --green-light: #e8f0e9;
+
+    --black: #171e19;
+    --text: #3d4941;
+    --muted: #758079;
+
+    --white: #ffffff;
+
+    --background: #f6f8f6;
+
+    --border: #dfe6e0;
+
+    --yellow: #a47d28;
+    --yellow-light: #f6f0df;
+
+    --blue: #5c7180;
+    --blue-light: #edf2f4;
+
+    --shadow-small: 0 3px 12px rgba(20, 35, 24, 0.05);
+    --shadow: 0 10px 30px rgba(20, 35, 24, 0.08);
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Poppins", sans-serif;
+    color: var(--black);
+}
+
+.section-label {
+    color: var(--green);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+
+    margin-bottom: 11px;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+header {
+    width: 100%;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border-bottom: 1px solid var(--border);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    backdrop-filter: blur(10px);
+}
+
+header nav {
+    max-width: 1280px;
+
+    height: 72px;
+
+    margin: auto;
+
+    padding: 0 32px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+header nav h1 {
+    font-family: "Poppins", sans-serif;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    color: var(--black);
+
+    white-space: nowrap;
+}
+
+header nav > div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 29px;
+}
+
+header nav a {
+    text-decoration: none;
+
+    color: #68736c;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    transition: 0.2s ease;
+}
+
+header nav a:hover {
+    color: var(--green);
+}
+
+header nav a:nth-child(2) {
+    color: var(--green);
+
+    font-weight: 700;
+}
+
+header nav a:last-child {
+    background: var(--black);
+
+    color: white;
+
+    padding: 9px 17px;
+
+    border-radius: 6px;
+}
+
+header nav a:last-child:hover {
+    background: var(--green);
+
+    color: white;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.issues-hero {
+    background:
+        radial-gradient(
+            circle at 85% 30%,
+            rgba(82, 116, 90, 0.10),
+            transparent 30%
+        ),
+        #e8f0e9;
+
+    border-bottom: 1px solid #d8e2da;
+
+    padding: 82px 32px;
+}
+
+.issues-hero-content {
+    max-width: 1120px;
+
+    margin: auto;
+}
+
+.issues-hero h2 {
+    max-width: 720px;
+
+    font-size: 46px;
+
+    line-height: 1.12;
+
+    letter-spacing: -1.5px;
+
+    margin-bottom: 17px;
+}
+
+.issues-hero-content > p:last-child {
+    max-width: 590px;
+
+    color: #657169;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   SUMMARY CARDS
+========================================================= */
+
+.issue-summary {
+    max-width: 1120px;
+
+    margin: -30px auto 0;
+
+    position: relative;
+
+    z-index: 2;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    box-shadow: var(--shadow);
+
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    overflow: hidden;
+}
+
+.summary-box {
+    min-height: 110px;
+
+    padding: 22px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    border-right: 1px solid var(--border);
+
+    transition: 0.2s ease;
+}
+
+.summary-box:last-child {
+    border-right: none;
+}
+
+.summary-box:hover {
+    background: #fbfcfb;
+}
+
+.summary-box h3 {
+    font-size: 29px;
+
+    line-height: 1.1;
+
+    margin-bottom: 5px;
+}
+
+.summary-box p {
+    color: var(--muted);
+
+    font-size: 10px;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   SEARCH + FILTERS
+========================================================= */
+
+.issues-controls {
+    max-width: 1120px;
+
+    margin: auto;
+
+    padding: 45px 0 28px;
+}
+
+.search-box {
+    max-width: 620px;
+
+    position: relative;
+
+    margin-bottom: 18px;
+}
+
+.search-box::before {
+    content: "⌕";
+
+    position: absolute;
+
+    left: 15px;
+    top: 50%;
+
+    transform: translateY(-52%);
+
+    color: #89938d;
+
+    font-size: 19px;
+
+    pointer-events: none;
+}
+
+.search-box input {
+    width: 100%;
+
+    height: 46px;
+
+    padding: 0 16px 0 43px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 7px;
+
+    outline: none;
+
+    color: var(--text);
+
+    font-size: 12px;
+
+    box-shadow: var(--shadow-small);
+
+    transition: 0.2s ease;
+}
+
+.search-box input::placeholder {
+    color: #9ba49e;
+}
+
+.search-box input:focus {
+    border-color: #8da692;
+
+    box-shadow:
+        0 0 0 3px rgba(82, 116, 90, 0.08);
+}
+
+.issue-filters {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+.filter-btn {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    color: #69746d;
+
+    padding: 8px 14px;
+
+    border-radius: 5px;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.filter-btn:hover {
+    border-color: #a9b9ad;
+
+    color: var(--green);
+}
+
+.filter-btn.active {
+    background: var(--black);
+
+    border-color: var(--black);
+
+    color: white;
+}
+
+
+/* =========================================================
+   ISSUES SECTION
+========================================================= */
+
+.issues-section {
+    max-width: 1120px;
+
+    margin: auto;
+
+    padding: 18px 0 90px;
+}
+
+.section-heading {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    gap: 20px;
+
+    margin-bottom: 23px;
+}
+
+.section-heading h2 {
+    font-size: 30px;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.5px;
+}
+
+
+/* =========================================================
+   REPORT BUTTON
+========================================================= */
+
+.primary-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: var(--black);
+
+    color: white;
+
+    border: 1px solid var(--black);
+
+    border-radius: 6px;
+
+    padding: 10px 16px;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition: 0.2s ease;
+}
+
+.primary-btn:hover {
+    background: var(--green);
+
+    border-color: var(--green);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   ISSUE GRID
+========================================================= */
+
+.issues-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   ISSUE CARD
+========================================================= */
+
+.issue-card {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+
+    padding: 24px;
+
+    box-shadow: var(--shadow-small);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.issue-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #cbd8cd;
+
+    box-shadow: var(--shadow);
+}
+
+.issue-card-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 15px;
+}
+
+.issue-number {
+    color: var(--green);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.issue-card h3 {
+    font-size: 18px;
+
+    line-height: 1.35;
+
+    margin-bottom: 5px;
+}
+
+.issue-location {
+    color: #7c8780;
+
+    font-size: 10px;
+
+    margin-bottom: 15px;
+}
+
+.issue-description {
+    color: #59645d;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+    margin-bottom: 18px;
+
+    display: -webkit-box;
+
+    -webkit-line-clamp: 3;
+
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   STATUS BADGES
+========================================================= */
+
+.status {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 25px;
+
+    padding: 4px 10px;
+
+    border-radius: 5px;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+.status.pending {
+    background: #f1f1ec;
+
+    color: #7c775f;
+}
+
+.status.review {
+    background: var(--blue-light);
+
+    color: var(--blue);
+}
+
+.status.scheduled {
+    background: var(--yellow-light);
+
+    color: var(--yellow);
+}
+
+.status.progress {
+    background: var(--green-light);
+
+    color: var(--green-dark);
+}
+
+.status.resolved {
+    background: #e3eee5;
+
+    color: #47704e;
+}
+
+
+/* =========================================================
+   ISSUE META
+========================================================= */
+
+.issue-meta {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 18px;
+
+    padding: 13px 0;
+
+    border-top: 1px solid #edf0ed;
+
+    border-bottom: 1px solid #edf0ed;
+
+    margin-bottom: 22px;
+}
+
+.issue-meta span {
+    color: #89938d;
+
+    font-size: 10px;
+}
+
+.issue-meta strong {
+    color: #4a554e;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   ISSUE TIMELINE
+========================================================= */
+
+.issue-timeline {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    position: relative;
+
+    margin: 10px 0 24px;
+}
+
+.issue-timeline::before {
+    content: "";
+
+    position: absolute;
+
+    left: 8px;
+    right: 8px;
+
+    top: 7px;
+
+    height: 1px;
+
+    background: #dce2dd;
+
+    z-index: 0;
+}
+
+.timeline-step {
+    position: relative;
+
+    z-index: 1;
+
+    width: 20%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+.timeline-step > span {
+    width: 15px;
+    height: 15px;
+
+    border-radius: 50%;
+
+    background: #e3e7e4;
+
+    border: 3px solid white;
+
+    box-shadow: 0 0 0 1px #d8ded9;
+
+    margin-bottom: 8px;
+
+    transition: 0.2s ease;
+}
+
+.timeline-step.done > span {
+    background: var(--green);
+
+    box-shadow:
+        0 0 0 1px var(--green),
+        0 2px 5px rgba(63, 95, 71, 0.15);
+}
+
+.timeline-step div {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.timeline-step strong {
+    color: #6d7871;
+
+    font-size: 8px;
+
+    font-weight: 600;
+
+    line-height: 1.25;
+}
+
+.timeline-step.done strong {
+    color: var(--green-dark);
+}
+
+.timeline-step small {
+    color: #a0a8a3;
+
+    font-size: 7px;
+
+    margin-top: 3px;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   LATEST UPDATE
+========================================================= */
+
+.issue-update {
+    background: #f7f9f7;
+
+    border-left: 3px solid var(--green);
+
+    border-radius: 5px;
+
+    padding: 12px 14px;
+}
+
+.issue-update strong {
+    display: block;
+
+    color: #4c5b50;
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
+
+    margin-bottom: 3px;
+}
+
+.issue-update p {
+    color: #69736c;
+
+    font-size: 10px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   NO ISSUES
+========================================================= */
+
+.no-results {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+
+    padding: 75px 25px;
+
+    text-align: center;
+
+    display: none;
+}
+
+.no-results h3 {
+    font-size: 20px;
+
+    margin-bottom: 7px;
+}
+
+.no-results p {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   BOTTOM CTA
+========================================================= */
+
+.issues-cta {
+    background: var(--black);
+
+    color: white;
+
+    padding: 68px 7%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 35px;
+}
+
+.issues-cta .section-label {
+    color: #a7c2ac;
+}
+
+.issues-cta h2 {
+    color: white;
+
+    font-size: 31px;
+
+    line-height: 1.25;
+
+    margin-bottom: 8px;
+}
+
+.issues-cta p:not(.section-label) {
+    color: #adb6af;
+
+    font-size: 12px;
+}
+
+.issues-cta .primary-btn {
+    background: white;
+
+    color: var(--black);
+
+    border-color: white;
+}
+
+.issues-cta .primary-btn:hover {
+    background: var(--green-light);
+
+    border-color: var(--green-light);
+
+    color: var(--black);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    background: #101511;
+
+    color: #7f8982;
+
+    text-align: center;
+
+    padding: 27px 20px;
+
+    border-top: 1px solid #202720;
+}
+
+footer p {
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .issue-summary {
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+
+    .issues-controls,
+    .issues-section {
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+
+    .issues-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    header nav {
+        height: auto;
+
+        padding: 15px 20px;
+
+        flex-direction: column;
+
+        gap: 13px;
+    }
+
+    header nav > div {
+        gap: 17px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .issues-hero {
+        padding: 65px 25px;
+    }
+
+    .issues-hero h2 {
+        font-size: 39px;
+    }
+
+    .issue-summary {
+        grid-template-columns: repeat(2, 1fr);
+
+        margin-top: -20px;
+    }
+
+    .summary-box {
+        border-right: none;
+
+        border-bottom: 1px solid var(--border);
+    }
+
+    .summary-box:nth-child(odd) {
+        border-right: 1px solid var(--border);
+    }
+
+    .summary-box:last-child {
+        grid-column: 1 / -1;
+
+        border-right: none;
+    }
+
+    .issues-cta {
+        padding: 55px 25px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    header nav h1 {
+        font-size: 18px;
+    }
+
+    header nav > div {
+        gap: 11px;
+    }
+
+    header nav a {
+        font-size: 10px;
+    }
+
+    header nav a:last-child {
+        padding: 8px 13px;
+    }
+
+    .issues-hero {
+        padding: 55px 20px;
+    }
+
+    .issues-hero h2 {
+        font-size: 32px;
+
+        letter-spacing: -0.8px;
+    }
+
+    .issues-hero-content > p:last-child {
+        font-size: 12px;
+    }
+
+    .issue-summary {
+        grid-template-columns: 1fr;
+
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .summary-box,
+    .summary-box:nth-child(odd) {
+        border-right: none;
+
+        border-bottom: 1px solid var(--border);
+    }
+
+    .summary-box:last-child {
+        grid-column: auto;
+
+        border-bottom: none;
+    }
+
+    .issues-controls,
+    .issues-section {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .section-heading {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .section-heading h2 {
+        font-size: 27px;
+    }
+
+    .issue-card {
+        padding: 19px;
+    }
+
+    .issue-card-top {
+        align-items: flex-start;
+    }
+
+    .issue-timeline {
+        min-width: 510px;
+
+        overflow-x: auto;
+
+        padding-bottom: 8px;
+    }
+
+    .issues-grid {
+        overflow: hidden;
+    }
+
+    .issues-cta h2 {
+        font-size: 26px;
+    }
+}
+/* =========================================================
+   CAMPUSHUB - REPORT PAGE
+   Professional • Clean • Green + Black + White
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: #f6f8f6;
+    color: #18201b;
+    line-height: 1.6;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+a {
+    color: inherit;
+}
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+    --green: #52745a;
+    --green-dark: #3f5f47;
+    --green-light: #e8f0e9;
+
+    --black: #171e19;
+    --text: #3d4941;
+    --muted: #758079;
+
+    --white: #ffffff;
+
+    --background: #f6f8f6;
+
+    --border: #dfe6e0;
+
+    --shadow-small: 0 3px 12px rgba(20, 35, 24, 0.05);
+    --shadow: 0 12px 35px rgba(20, 35, 24, 0.08);
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+header {
+    width: 100%;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border-bottom: 1px solid var(--border);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    backdrop-filter: blur(10px);
+}
+
+header nav {
+    max-width: 1280px;
+
+    height: 72px;
+
+    margin: auto;
+
+    padding: 0 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+header nav h1 {
+    font-family: "Poppins", sans-serif;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    color: var(--black);
+
+    white-space: nowrap;
+}
+
+header nav > div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 29px;
+}
+
+header nav a {
+    text-decoration: none;
+
+    color: #68736c;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    transition: 0.2s ease;
+}
+
+header nav a:hover {
+    color: var(--green);
+}
+
+/* Report is the current page */
+header nav a:nth-child(3) {
+    color: var(--green);
+
+    font-weight: 700;
+}
+
+header nav a:last-child {
+    background: var(--black);
+
+    color: white;
+
+    padding: 9px 17px;
+
+    border-radius: 6px;
+}
+
+header nav a:last-child:hover {
+    background: var(--green);
+
+    color: white;
+}
+
+
+/* =========================================================
+   GLOBAL LABEL
+========================================================= */
+
+.section-label {
+    color: var(--green);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.7px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 11px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.issues-hero {
+    background:
+        radial-gradient(
+            circle at 85% 30%,
+            rgba(82, 116, 90, 0.10),
+            transparent 30%
+        ),
+        #e8f0e9;
+
+    border-bottom: 1px solid #d8e2da;
+
+    padding: 85px 32px;
+}
+
+.issues-hero-content {
+    max-width: 900px;
+
+    margin: auto;
+}
+
+.issues-hero h2 {
+    max-width: 700px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 48px;
+
+    line-height: 1.1;
+
+    letter-spacing: -1.5px;
+
+    color: var(--black);
+
+    margin-bottom: 17px;
+}
+
+.issues-hero-content > p:last-child {
+    max-width: 560px;
+
+    color: #657169;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   REPORT SECTION
+========================================================= */
+
+.report-section {
+    min-height: 600px;
+
+    padding: 70px 25px 90px;
+
+    background: var(--background);
+}
+
+.report-container {
+    max-width: 720px;
+
+    margin: auto;
+}
+
+
+/* =========================================================
+   FORM HEADING
+========================================================= */
+
+.report-container .section-heading {
+    margin-bottom: 28px;
+}
+
+.report-container .section-heading h2 {
+    font-family: "Poppins", sans-serif;
+
+    font-size: 30px;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.5px;
+
+    color: var(--black);
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+#reportForm {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 11px;
+
+    padding: 34px;
+
+    box-shadow: var(--shadow-small);
+}
+
+.form-group {
+    margin-bottom: 23px;
+}
+
+.form-group:last-of-type {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+
+    color: #3f4b43;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    background: #ffffff;
+
+    border: 1px solid #d8dfd9;
+
+    border-radius: 7px;
+
+    padding: 12px 13px;
+
+    color: var(--text);
+
+    font-size: 12px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.form-group input {
+    height: 45px;
+}
+
+.form-group select {
+    height: 45px;
+
+    cursor: pointer;
+}
+
+.form-group textarea {
+    min-height: 145px;
+
+    resize: vertical;
+
+    line-height: 1.7;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #a0a8a2;
+}
+
+
+/* Focus */
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #88a08d;
+
+    background: #fcfdfc;
+
+    box-shadow:
+        0 0 0 3px rgba(82, 116, 90, 0.08);
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.primary-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: var(--black);
+
+    color: white;
+
+    border: 1px solid var(--black);
+
+    border-radius: 6px;
+
+    padding: 11px 18px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    transition: 0.2s ease;
+}
+
+#reportForm .primary-btn {
+    width: 100%;
+
+    min-height: 45px;
+}
+
+.primary-btn:hover {
+    background: var(--green);
+
+    border-color: var(--green);
+
+    transform: translateY(-2px);
+}
+
+.primary-btn:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   SUCCESS MESSAGE
+========================================================= */
+
+.report-success {
+    background: white;
+
+    border: 1px solid #d7e4d9;
+
+    border-radius: 11px;
+
+    padding: 45px 35px;
+
+    text-align: center;
+
+    box-shadow: var(--shadow);
+}
+
+.report-success h3 {
+    font-family: "Poppins", sans-serif;
+
+    color: var(--green-dark);
+
+    font-size: 24px;
+
+    margin-bottom: 9px;
+}
+
+.report-success h3::first-letter {
+    color: var(--green);
+}
+
+.report-success p {
+    max-width: 430px;
+
+    margin: 0 auto 25px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   TRANSPARENCY CTA
+========================================================= */
+
+.issues-cta {
+    background: var(--black);
+
+    color: white;
+
+    padding: 68px 7%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+.issues-cta > div {
+    max-width: 650px;
+}
+
+.issues-cta .section-label {
+    color: #a7c2ac;
+}
+
+.issues-cta h2 {
+    color: white;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 31px;
+
+    line-height: 1.25;
+
+    margin-bottom: 9px;
+}
+
+.issues-cta p:not(.section-label) {
+    color: #adb6af;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    background: #101511;
+
+    color: #7f8982;
+
+    text-align: center;
+
+    padding: 27px 20px;
+
+    border-top: 1px solid #202720;
+}
+
+footer p {
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   FORM VALIDATION
+========================================================= */
+
+.form-group input:invalid:not(:placeholder-shown),
+.form-group textarea:invalid:not(:placeholder-shown) {
+    border-color: #d7b4b4;
+}
+
+.form-group input:valid:not(:placeholder-shown),
+.form-group textarea:valid:not(:placeholder-shown) {
+    border-color: #c9d8cb;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    header nav {
+        height: auto;
+
+        padding: 15px 20px;
+
+        flex-direction: column;
+
+        gap: 13px;
+    }
+
+    header nav > div {
+        gap: 17px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .issues-hero {
+        padding: 65px 25px;
+    }
+
+    .issues-hero h2 {
+        font-size: 40px;
+    }
+
+    .report-section {
+        padding: 55px 20px 70px;
+    }
+
+    #reportForm {
+        padding: 27px;
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    header nav h1 {
+        font-size: 18px;
+    }
+
+    header nav > div {
+        gap: 11px;
+    }
+
+    header nav a {
+        font-size: 10px;
+    }
+
+    header nav a:last-child {
+        padding: 8px 13px;
+    }
+
+    .issues-hero {
+        padding: 55px 20px;
+    }
+
+    .issues-hero h2 {
+        font-size: 33px;
+
+        letter-spacing: -0.8px;
+    }
+
+    .issues-hero-content > p:last-child {
+        font-size: 12px;
+    }
+
+    .report-section {
+        padding: 50px 15px 65px;
+    }
+
+    .report-container .section-heading h2 {
+        font-size: 27px;
+    }
+
+    #reportForm {
+        padding: 22px 18px;
+
+        border-radius: 9px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group input,
+    .form-group select {
+        height: 44px;
+    }
+
+    .form-group textarea {
+        min-height: 130px;
+    }
+
+    .issues-cta {
+        padding: 55px 22px;
+    }
+
+    .issues-cta h2 {
+        font-size: 26px;
+    }
+}
+
+
+@media (max-width: 380px) {
+
+    .issues-hero h2 {
+        font-size: 30px;
+    }
+
+    #reportForm {
+        padding: 20px 15px;
+    }
+
+    .report-success {
+        padding: 35px 20px;
+    }
+}
