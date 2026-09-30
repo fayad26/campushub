@@ -1,549 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CampusHub | Campus Issues</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Poppins',sans-serif;background:#f7f8f6;color:#171717;line-height:1.6}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-a{text-decoration:none;color:inherit;transition:.2s ease}
+    <title>Report an Issue - CampusHub</title>
 
-/* NAVIGATION */
-.navbar{display:flex;justify-content:space-between;align-items:center;padding:17px 7%;background:#fff;border-bottom:1px solid #e5e5e5}
-.logo{font-size:21px;font-weight:700;color:#111}
-.nav-links{display:flex;align-items:center;gap:26px}
-.nav-links a{color:#555;font-size:14px;font-weight:500}
-.nav-links a:hover,.nav-links .active{color:#5f7f63}
-.login-button{background:#111;color:#fff!important;padding:9px 18px;border-radius:5px}
-.login-button:hover{background:#333}
-
-/* PAGE HERO */
-.page-hero{padding:58px 7% 48px;background:#dfeadf;border-bottom:1px solid #d2ddd2}
-.page-hero-inner{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:end;gap:35px}
-.small-title{color:#5f7f63;font-size:11px;font-weight:700;letter-spacing:1.6px;margin-bottom:10px}
-.page-hero h1{font-size:42px;line-height:1.15;letter-spacing:-.7px;margin-bottom:12px}
-.page-hero p:not(.small-title){color:#5b5b5b;font-size:14px;max-width:650px}
-.report-btn{border:0;background:#111;color:#fff;padding:12px 19px;border-radius:6px;font-size:14px;font-weight:600;white-space:nowrap}
-.report-btn:hover{background:#333}
-
-/* MAIN */
-.main{max-width:1100px;margin:auto;padding:38px 0 75px}
-
-/* STATS */
-.quick-stats{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid #e1e3e0;border-radius:9px;margin-bottom:25px;overflow:hidden}
-.quick-stat{padding:18px 20px;border-right:1px solid #e5e5e5}
-.quick-stat:last-child{border-right:0}
-.quick-stat strong{display:block;color:#5f7f63;font-size:24px;line-height:1.2}
-.quick-stat span{font-size:11px;color:#707070}
-
-/* BOARD HEADER */
-.board-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:18px}
-.board-head h2{font-size:26px;margin-bottom:3px}
-.board-head p{font-size:12px;color:#777}
-.sort-select{border:1px solid #d5d5d5;background:#fff;border-radius:6px;padding:9px 12px;color:#444;font-size:12px;outline:none}
-
-/* FILTERS */
-.filters{background:#fff;border:1px solid #e1e3e0;border-radius:8px;padding:13px;display:flex;gap:9px;align-items:center;margin-bottom:18px}
-.search{flex:1;position:relative}
-.search input{width:100%;border:1px solid #ddd;border-radius:5px;padding:9px 12px;outline:none;font-size:12px;background:#fafafa}
-.search input:focus{border-color:#8ba58e;background:#fff}
-.filter-btn{border:1px solid #ddd;background:#fff;color:#666;border-radius:5px;padding:8px 12px;font-size:11px}
-.filter-btn:hover,.filter-btn.active{background:#e1e9e2;border-color:#cbd8cc;color:#536a57;font-weight:600}
-
-/* ISSUE CARDS */
-.issue-list{display:flex;flex-direction:column;gap:12px}
-.issue-card{background:#fff;border:1px solid #dedede;border-radius:9px;padding:20px;display:grid;grid-template-columns:72px 1fr auto;gap:19px;transition:.18s ease}
-.issue-card:hover{border-color:#c7cec8;box-shadow:0 7px 20px rgba(0,0,0,.04)}
-.vote-box{border:1px solid #e1e3e0;background:#f8f9f7;border-radius:7px;min-height:68px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
-.vote-btn{border:0;background:transparent;color:#888;font-size:19px;line-height:18px}
-.vote-btn:hover,.vote-box.voted .vote-btn{color:#5f7f63}
-.vote-count{font-size:15px;font-weight:700;color:#333}
-.vote-label{font-size:9px;color:#999;text-transform:uppercase;letter-spacing:.5px}
-.issue-main{min-width:0}
-.issue-top{display:flex;align-items:center;gap:8px;margin-bottom:7px;flex-wrap:wrap}
-.issue-id{font-size:10px;color:#999;font-weight:600}
-.status{display:inline-block;font-size:10px;padding:4px 8px;border-radius:4px;font-weight:600}
-.pending{background:#f1ead3;color:#856d27}
-.progress{background:#e1e9e2;color:#536a57}
-.resolved{background:#dce9dd;color:#4f7654}
-.high{background:#f0e3df;color:#8a5147}
-.medium{background:#eeeae0;color:#796a42}
-.issue-main h3{font-size:17px;margin-bottom:3px}
-.issue-desc{font-size:12px;color:#686868;margin-bottom:11px;max-width:700px}
-.issue-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:10px;color:#999}
-.issue-meta strong{color:#777}
-.issue-side{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;min-width:110px}
-.priority{font-size:10px;font-weight:600}
-.details-btn{border:1px solid #ccc;background:#fff;border-radius:5px;padding:7px 11px;font-size:10px;color:#444}
-.details-btn:hover{background:#f3f3f3}
-
-/* EMPTY / LOAD */
-.load-more{display:block;margin:22px auto 0;border:1px solid #ccc;background:#fff;border-radius:6px;padding:10px 18px;font-size:12px;color:#444}
-.load-more:hover{background:#f1f1f1}
-
-/* REPORT PANEL */
-.overlay{display:none;position:fixed;inset:0;background:rgba(17,17,17,.35);z-index:20;padding:25px;overflow:auto}
-.overlay.open{display:flex;align-items:center;justify-content:center}
-.modal{width:100%;max-width:610px;background:#fff;border-radius:10px;border:1px solid #ddd;box-shadow:0 18px 55px rgba(0,0,0,.15);padding:28px}
-.modal-head{display:flex;justify-content:space-between;align-items:start;margin-bottom:22px}
-.modal-head h2{font-size:24px}
-.modal-head p{font-size:12px;color:#777;margin-top:2px}
-.close{border:0;background:#f3f3f3;width:32px;height:32px;border-radius:5px;font-size:18px;color:#555}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-.field{display:flex;flex-direction:column;gap:5px}
-.field.full{grid-column:1/-1}
-.field label{font-size:11px;font-weight:600;color:#444}
-.field input,.field select,.field textarea{border:1px solid #d9d9d9;border-radius:5px;padding:9px 10px;background:#fafafa;outline:none;font-size:12px}
-.field textarea{min-height:105px;resize:vertical}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:#8ba58e;background:#fff}
-.form-note{font-size:10px;color:#999;margin-top:13px}
-.submit-row{display:flex;justify-content:flex-end;gap:9px;margin-top:21px}
-.cancel-btn{border:1px solid #ccc;background:#fff;border-radius:5px;padding:9px 15px;font-size:12px}
-.submit-btn{border:0;background:#111;color:#fff;border-radius:5px;padding:9px 16px;font-size:12px;font-weight:600}
-.submit-btn:hover{background:#333}
-
-/* DETAIL PANEL */
-.detail-modal{max-width:650px}
-.detail-progress{margin:22px 0 5px;border-left:2px solid #d9e2d9;padding-left:20px}
-.detail-step{position:relative;margin-bottom:18px}
-.detail-step:last-child{margin-bottom:0}
-.detail-dot{position:absolute;left:-27px;top:4px;width:10px;height:10px;border-radius:50%;background:#ddd}
-.detail-step.done .detail-dot{background:#6f8f72}
-.detail-step.current .detail-dot{background:#111}
-.detail-step strong{font-size:12px;display:block}
-.detail-step small{font-size:10px;color:#999}
-.detail-text{font-size:12px;color:#666;margin-top:15px;padding:13px;background:#f7f8f6;border:1px solid #e5e5e5;border-radius:6px}
-
-/* FOOTER */
-footer{text-align:center;padding:30px 20px;background:#090909;color:#999}
-.footer-logo{color:#fff;font-weight:600;font-size:18px;margin-bottom:5px}
-footer p{font-size:11px;margin-top:4px}
-
-/* TOAST */
-.toast{position:fixed;right:22px;bottom:22px;background:#111;color:#fff;padding:11px 16px;border-radius:6px;font-size:11px;opacity:0;transform:translateY(10px);pointer-events:none;transition:.25s;z-index:40}
-.toast.show{opacity:1;transform:translateY(0)}
-
-/* MOBILE */
-@media(max-width:800px){
- .navbar{padding:16px 6%;flex-direction:column;gap:14px}
- .nav-links{gap:14px;flex-wrap:wrap;justify-content:center}
- .page-hero{padding:45px 6%}
- .page-hero-inner{align-items:flex-start;flex-direction:column}
- .page-hero h1{font-size:35px}
- .main{padding:28px 6% 60px}
- .quick-stats{grid-template-columns:repeat(2,1fr)}
- .quick-stat:nth-child(2){border-right:0}
- .quick-stat:nth-child(-n+2){border-bottom:1px solid #e5e5e5}
- .board-head{align-items:flex-start;flex-direction:column}
- .filters{flex-wrap:wrap}
- .search{flex-basis:100%}
- .issue-card{grid-template-columns:58px 1fr}
- .issue-side{grid-column:2;align-items:flex-start;flex-direction:row}
-}
-@media(max-width:520px){
- .quick-stats{grid-template-columns:1fr}
- .quick-stat{border-right:0!important;border-bottom:1px solid #e5e5e5}
- .quick-stat:last-child{border-bottom:0}
- .issue-card{grid-template-columns:1fr}
- .vote-box{width:62px}
- .issue-side{grid-column:1}
- .form-grid{grid-template-columns:1fr}
- .field.full{grid-column:1}
-}
-</style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 
 <body>
 
 <header>
-<nav class="navbar">
-    <div class="logo">🏫 CampusHub</div>
-    <div class="nav-links">
-<a href="index.html">Home</a>
-<a href="issues.html">Issues</a>
-<a href="report.html" class="active">Report</a>
-<a href="about.html">About</a>
-        <a href="#" class="login-button">Login</a>
-    </div>
-</nav>
+
+    <nav>
+
+        <h1>🏫 CampusHub</h1>
+
+        <div>
+
+            <a href="index.html">Home</a>
+
+            <a href="issues.html">Issues</a>
+
+            <a href="report.html">Report</a>
+
+            <a href="about.html">About</a>
+
+            <a href="login.html">Login</a>
+
+        </div>
+
+    </nav>
+
 </header>
 
-<section class="page-hero">
-    <div class="page-hero-inner">
-        <div>
-            <p class="small-title">CAMPUS ISSUE BOARD</p>
-            <h1>See it. Support it.<br><span style="color:#5f7f63">Get it noticed.</span></h1>
-            <p>Browse complaints reported across campus, upvote problems that need attention, and follow their progress from report to resolution.</p>
+
+<main>
+
+
+    <!-- HERO -->
+
+    <section class="issues-hero">
+
+        <div class="issues-hero-content">
+
+            <p class="section-label">
+                REPORT A PROBLEM
+            </p>
+
+            <h2>
+                Something needs fixing?
+            </h2>
+
+            <p>
+                Tell us what happened and help make
+                the campus better for everyone.
+            </p>
+
         </div>
-        <button class="report-btn" id="heroReport">＋ Report a Complaint</button>
-    </div>
-</section>
 
-<main class="main">
-
-    <section class="quick-stats">
-        <div class="quick-stat"><strong id="totalCount">24</strong><span>Total complaints</span></div>
-        <div class="quick-stat"><strong>7</strong><span>Currently in progress</span></div>
-        <div class="quick-stat"><strong>12</strong><span>Resolved complaints</span></div>
-        <div class="quick-stat"><strong>148</strong><span>Community upvotes</span></div>
     </section>
 
-    <div class="board-head">
+
+
+    <!-- FORM -->
+
+    <section class="report-section">
+
+        <div class="report-container">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="section-label">
+                        NEW REPORT
+                    </p>
+
+                    <h2>
+                        Report an Issue
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <form id="reportForm">
+
+
+                <!-- TITLE -->
+
+                <div class="form-group">
+
+                    <label for="issueTitle">
+                        What is the problem?
+                    </label>
+
+                    <input
+                        type="text"
+                        id="issueTitle"
+                        placeholder="Example: Water leakage near hostel"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- CATEGORY -->
+
+                <div class="form-group">
+
+                    <label for="issueCategory">
+                        Category
+                    </label>
+
+                    <select id="issueCategory" required>
+
+                        <option value="">
+                            Select a category
+                        </option>
+
+                        <option value="Infrastructure">
+                            Infrastructure
+                        </option>
+
+                        <option value="Electricity">
+                            Electricity
+                        </option>
+
+                        <option value="Water">
+                            Water
+                        </option>
+
+                        <option value="Cleanliness">
+                            Cleanliness
+                        </option>
+
+                        <option value="Safety">
+                            Safety
+                        </option>
+
+                        <option value="Hostel">
+                            Hostel
+                        </option>
+
+                        <option value="Classroom">
+                            Classroom
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- LOCATION -->
+
+                <div class="form-group">
+
+                    <label for="issueLocation">
+                        Where is the problem?
+                    </label>
+
+                    <input
+                        type="text"
+                        id="issueLocation"
+                        placeholder="Example: Near CSE Block"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-group">
+
+                    <label for="issueDescription">
+                        Describe the problem
+                    </label>
+
+                    <textarea
+                        id="issueDescription"
+                        rows="6"
+                        placeholder="Explain what is wrong..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    Submit Issue
+                </button>
+
+
+            </form>
+
+
+            <!-- SUCCESS MESSAGE -->
+
+            <div
+                id="successMessage"
+                class="report-success"
+                style="display:none;"
+            >
+
+                <h3>
+                    ✓ Issue Reported
+                </h3>
+
+                <p>
+                    Your issue has been submitted successfully.
+                    You can now track its progress.
+                </p>
+
+                <a
+                    href="issues.html"
+                    class="primary-btn"
+                >
+                    View Issues
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- INFO -->
+
+    <section class="issues-cta">
+
         <div>
-            <p class="small-title">PUBLIC COMPLAINTS</p>
-            <h2>Campus issues</h2>
-            <p>Upvote an issue if you believe it deserves more attention.</p>
-        </div>
-        <select class="sort-select" id="sortSelect">
-            <option value="priority">Highest priority</option>
-            <option value="votes">Most upvoted</option>
-            <option value="recent">Most recent</option>
-            <option value="old">Oldest first</option>
-        </select>
-    </div>
 
-    <div class="filters">
-        <div class="search">
-            <input id="searchInput" type="search" placeholder="Search complaints, locations or categories...">
-        </div>
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="pending">Pending</button>
-        <button class="filter-btn" data-filter="progress">In Progress</button>
-        <button class="filter-btn" data-filter="resolved">Resolved</button>
-    </div>
+            <p class="section-label">
+                TRANSPARENCY
+            </p>
 
-    <section class="issue-list" id="issueList"></section>
-    <button class="load-more" id="loadMore">Show more complaints</button>
+            <h2>
+                Your report shouldn't disappear.
+            </h2>
+
+            <p>
+                CampusHub lets you follow an issue
+                from the moment it is reported
+                until it is resolved.
+            </p>
+
+        </div>
+
+    </section>
+
 
 </main>
 
+
+
 <footer>
-    <div class="footer-logo">🏫 CampusHub</div>
-    <p>Report. Track. Improve.</p>
-    <p>© 2026 CampusHub</p>
+
+    <p>
+        © 2026 CampusHub. Built for a better campus.
+    </p>
+
 </footer>
 
-<!-- REPORT COMPLAINT -->
-<div class="overlay" id="reportOverlay">
-    <div class="modal">
-        <div class="modal-head">
-            <div>
-                <p class="small-title">MAKE YOUR CAMPUS BETTER</p>
-                <h2>Report a complaint</h2>
-                <p>Give enough detail for the issue to be understood and acted upon.</p>
-            </div>
-            <button class="close" data-close="reportOverlay">×</button>
-        </div>
 
-        <form id="reportForm">
-            <div class="form-grid">
-                <div class="field">
-                    <label for="title">Complaint title</label>
-                    <input id="title" required placeholder="e.g. Broken classroom fan">
-                </div>
-                <div class="field">
-                    <label for="category">Category</label>
-                    <select id="category" required>
-                        <option value="">Select category</option>
-                        <option>Facilities</option>
-                        <option>Electrical</option>
-                        <option>Water & Sanitation</option>
-                        <option>Safety</option>
-                        <option>Transport</option>
-                        <option>Academic</option>
-                        <option>Other</option>
-                    </select>
-                </div>
-                <div class="field">
-                    <label for="location">Location</label>
-                    <input id="location" required placeholder="e.g. Block A · Room 204">
-                </div>
-                <div class="field">
-                    <label for="urgency">Urgency</label>
-                    <select id="urgency" required>
-                        <option>Medium</option>
-                        <option>High</option>
-                        <option>Low</option>
-                    </select>
-                </div>
-                <div class="field full">
-                    <label for="description">Description</label>
-                    <textarea id="description" required placeholder="Describe what happened, where it happened and anything useful for resolving it..."></textarea>
-                </div>
-            </div>
-            <p class="form-note">🔒 Your account is attached to the complaint. Submitted complaints become visible on the public issue board.</p>
-            <div class="submit-row">
-                <button type="button" class="cancel-btn" data-close="reportOverlay">Cancel</button>
-                <button type="submit" class="submit-btn">Submit Complaint</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-<!-- ISSUE DETAILS -->
-<div class="overlay" id="detailOverlay">
-    <div class="modal detail-modal">
-        <div class="modal-head">
-            <div>
-                <p class="small-title">COMPLAINT DETAILS</p>
-                <h2 id="detailTitle">Issue</h2>
-                <p id="detailMeta">Issue #000</p>
-            </div>
-            <button class="close" data-close="detailOverlay">×</button>
-        </div>
-        <div id="detailBody"></div>
-    </div>
-</div>
-
-<div class="toast" id="toast"></div>
 
 <script>
-const issues = [
-    {
-        id:24,title:"Water leakage near hostel",category:"Water & Sanitation",
-        location:"Hostel Block · Ground Floor",status:"progress",statusText:"In Progress",
-        urgency:"High",votes:42,time:"29 Sep · 9:30 AM",
-        desc:"Water has been leaking near the hostel entrance and the floor becomes slippery after rain.",
-        steps:["Reported","Under Review","In Progress","Resolved"],current:2
-    },
-    {
-        id:23,title:"Broken classroom fan",category:"Electrical",
-        location:"Block A · Room 204",status:"pending",statusText:"Pending",
-        urgency:"High",votes:31,time:"28 Sep · 2:15 PM",
-        desc:"The ceiling fan is not working during afternoon classes, making the room uncomfortable.",
-        steps:["Reported","Under Review","In Progress","Resolved"],current:0
-    },
-    {
-        id:22,title:"Lights not working in corridor",category:"Electrical",
-        location:"Science Block · 2nd Floor",status:"progress",statusText:"In Progress",
-        urgency:"Medium",votes:24,time:"27 Sep · 11:08 AM",
-        desc:"Several corridor lights have stopped working, leaving part of the floor poorly lit.",
-        steps:["Reported","Under Review","In Progress","Resolved"],current:2
-    },
-    {
-        id:21,title:"Damaged desk benches",category:"Facilities",
-        location:"Block B · Room 108",status:"pending",statusText:"Pending",
-        urgency:"Medium",votes:18,time:"26 Sep · 4:41 PM",
-        desc:"Multiple desk benches have loose or damaged surfaces and need maintenance.",
-        steps:["Reported","Under Review","In Progress","Resolved"],current:0
-    },
-    {
-        id:20,title:"Broken tap near canteen",category:"Water & Sanitation",
-        location:"Main Canteen · East Side",status:"resolved",statusText:"Resolved",
-        urgency:"Low",votes:15,time:"24 Sep · 10:22 AM",
-        desc:"The tap beside the canteen was leaking continuously and wasting water.",
-        steps:["Reported","Under Review","In Progress","Resolved"],current:3
-    },
-    {
-        id:19,title:"Pothole near main gate",category:"Facilities",
-        location:"Main Gate · Parking Entrance",status:"progress",statusText:"In Progress",
-        urgency:"High",votes:11,time:"23 Sep · 8:56 AM",
-        desc:"A large pothole has formed near the parking entrance and is difficult to avoid.",
-        steps:["Reported","Under Review","In Progress","Resolved"],current:2
-    },
-    {
-        id:18,title:"Projector not functioning",category:"Academic",
-        location:"Seminar Hall · Block C",status:"resolved",statusText:"Resolved",
-        urgency:"Medium",votes:7,time:"20 Sep · 1:32 PM",
-        desc:"The seminar hall projector was displaying a blank screen during presentations.",
-        steps:["Reported","Under Review","In Progress","Resolved"],current:3
-    }
-];
 
-let activeFilter = "all";
-let visibleCount = 6;
-const voted = new Set();
+const STORAGE_KEY = "campusHubIssuesV2";
 
-function priorityValue(issue){
-    return issue.urgency === "High" ? 3 : issue.urgency === "Medium" ? 2 : 1;
-}
 
-function renderIssues(){
-    const query = document.getElementById("searchInput").value.toLowerCase().trim();
-    const sort = document.getElementById("sortSelect").value;
+/* GET EXISTING ISSUES */
 
-    let filtered = issues.filter(i => {
-        const matchesFilter = activeFilter === "all" || i.status === activeFilter;
-        const text = `${i.title} ${i.category} ${i.location} ${i.desc}`.toLowerCase();
-        return matchesFilter && text.includes(query);
-    });
+let issues =
+    JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 
-    filtered.sort((a,b)=>{
-        if(sort === "votes") return b.votes-a.votes;
-        if(sort === "recent") return b.id-a.id;
-        if(sort === "old") return a.id-b.id;
-        return priorityValue(b)-priorityValue(a) || b.votes-a.votes;
-    });
 
-    const shown = filtered.slice(0,visibleCount);
-    const list = document.getElementById("issueList");
+/* GENERATE ISSUE NUMBER */
 
-    if(!shown.length){
-        list.innerHTML = `<div style="background:#fff;border:1px solid #ddd;border-radius:8px;padding:35px;text-align:center;color:#777;font-size:12px">No complaints match your search.</div>`;
-    }else{
-        list.innerHTML = shown.map(issue => `
-            <article class="issue-card">
-                <div class="vote-box ${voted.has(issue.id) ? "voted":""}">
-                    <button class="vote-btn" onclick="upvote(${issue.id})" aria-label="Upvote">▲</button>
-                    <span class="vote-count">${issue.votes}</span>
-                    <span class="vote-label">votes</span>
-                </div>
+function generateIssueId() {
 
-                <div class="issue-main">
-                    <div class="issue-top">
-                        <span class="issue-id">ISSUE #${String(issue.id).padStart(3,"0")}</span>
-                        <span class="status ${issue.status}">${issue.statusText}</span>
-                    </div>
-                    <h3>${issue.title}</h3>
-                    <p class="issue-desc">${issue.desc}</p>
-                    <div class="issue-meta">
-                        <span>📍 <strong>${issue.location}</strong></span>
-                        <span>▣ ${issue.category}</span>
-                        <span>Reported ${issue.time}</span>
-                    </div>
-                </div>
-
-                <div class="issue-side">
-                    <span class="priority ${issue.urgency === "High" ? "high":issue.urgency === "Medium" ? "medium":""}">
-                        ${issue.urgency} priority
-                    </span>
-                    <button class="details-btn" onclick="showDetails(${issue.id})">View details →</button>
-                </div>
-            </article>
-        `).join("");
+    if (issues.length === 0) {
+        return "001";
     }
 
-    document.getElementById("loadMore").style.display =
-        filtered.length > visibleCount ? "block" : "none";
+
+    const numbers =
+        issues.map(issue => Number(issue.id));
+
+
+    const highest =
+        Math.max(...numbers);
+
+
+    return String(highest + 1).padStart(3, "0");
 }
 
-function upvote(id){
-    const issue = issues.find(i => i.id === id);
-    if(voted.has(id)){
-        issue.votes--;
-        voted.delete(id);
-        showToast("Your upvote was removed.");
-    }else{
-        issue.votes++;
-        voted.add(id);
-        showToast("Upvote added. The issue has more visibility now.");
-    }
-    renderIssues();
-}
 
-function showDetails(id){
-    const issue = issues.find(i => i.id === id);
-    document.getElementById("detailTitle").textContent = issue.title;
-    document.getElementById("detailMeta").textContent =
-        `ISSUE #${String(issue.id).padStart(3,"0")} · ${issue.category} · ${issue.location}`;
+/* FORM SUBMISSION */
 
-    document.getElementById("detailBody").innerHTML = `
-        <span class="status ${issue.status}">${issue.statusText}</span>
-        <p class="detail-text">${issue.desc}</p>
-        <div class="detail-progress">
-            ${issue.steps.map((step,index)=>`
-                <div class="detail-step ${index < issue.current ? "done":""} ${index === issue.current ? "current":""}">
-                    <div class="detail-dot"></div>
-                    <strong>${step}</strong>
-                    <small>${index < issue.current ? "Completed" : index === issue.current ? "Current status" : "Waiting for completion"}</small>
-                </div>
-            `).join("")}
-        </div>
-    `;
+document
+    .getElementById("reportForm")
+    .addEventListener("submit", function(event) {
 
-    document.getElementById("detailOverlay").classList.add("open");
-}
+        event.preventDefault();
 
-function openReport(){
-    document.getElementById("reportOverlay").classList.add("open");
-}
 
-function showToast(message){
-    const toast = document.getElementById("toast");
-    toast.textContent = message;
-    toast.classList.add("show");
-    clearTimeout(window.toastTimer);
-    window.toastTimer = setTimeout(()=>toast.classList.remove("show"),2200);
-}
+        const title =
+            document
+                .getElementById("issueTitle")
+                .value
+                .trim();
 
-document.querySelectorAll(".filter-btn").forEach(btn=>{
-    btn.addEventListener("click",()=>{
-        document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
-        btn.classList.add("active");
-        activeFilter = btn.dataset.filter;
-        visibleCount = 6;
-        renderIssues();
+
+        const category =
+            document
+                .getElementById("issueCategory")
+                .value;
+
+
+        const location =
+            document
+                .getElementById("issueLocation")
+                .value
+                .trim();
+
+
+        const description =
+            document
+                .getElementById("issueDescription")
+                .value
+                .trim();
+
+
+        const newIssue = {
+
+            id: generateIssueId(),
+
+            title: title,
+
+            category: category,
+
+            location: location,
+
+            description: description,
+
+            reportedAt:
+                new Date().toISOString(),
+
+            updatedAt:
+                new Date().toISOString(),
+
+            status: "pending",
+
+            scheduledDate: "",
+
+            scheduledTime: "",
+
+            expectedDuration: ""
+
+        };
+
+
+        /* ADD ISSUE */
+
+        issues.push(newIssue);
+
+
+        /* SAVE ISSUE */
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(issues)
+        );
+
+
+        /* HIDE FORM */
+
+        document
+            .getElementById("reportForm")
+            .style.display = "none";
+
+
+        /* SHOW SUCCESS */
+
+        document
+            .getElementById("successMessage")
+            .style.display = "block";
+
     });
-});
 
-document.getElementById("searchInput").addEventListener("input",renderIssues);
-document.getElementById("sortSelect").addEventListener("change",renderIssues);
-
-document.getElementById("loadMore").addEventListener("click",()=>{
-    visibleCount += 6;
-    renderIssues();
-});
-
-document.getElementById("heroReport").addEventListener("click",openReport);
-document.getElementById("navReport").addEventListener("click",e=>{
-    e.preventDefault();
-    openReport();
-});
-
-document.querySelectorAll("[data-close]").forEach(btn=>{
-    btn.addEventListener("click",()=>{
-        document.getElementById(btn.dataset.close).classList.remove("open");
-    });
-});
-
-document.querySelectorAll(".overlay").forEach(overlay=>{
-    overlay.addEventListener("click",e=>{
-        if(e.target === overlay) overlay.classList.remove("open");
-    });
-});
-
-document.addEventListener("keydown",e=>{
-    if(e.key === "Escape")
-        document.querySelectorAll(".overlay").forEach(o=>o.classList.remove("open"));
-});
-
-document.getElementById("reportForm").addEventListener("submit",e=>{
-    e.preventDefault();
-
-    const newIssue = {
-        id: issues.length ? Math.max(...issues.map(i=>i.id))+1 : 1,
-        title:document.getElementById("title").value,
-        category:document.getElementById("category").value,
-        location:document.getElementById("location").value,
-        urgency:document.getElementById("urgency").value,
-        status:"pending",
-        statusText:"Pending",
-        votes:0,
-        time:"Just now",
-        desc:document.getElementById("description").value,
-        steps:["Reported","Under Review","In Progress","Resolved"],
-        current:0
-    };
-
-    issues.unshift(newIssue);
-    document.getElementById("reportForm").reset();
-    document.getElementById("reportOverlay").classList.remove("open");
-    visibleCount = Math.max(visibleCount,6);
-    document.getElementById("totalCount").textContent =
-        Number(document.getElementById("totalCount").textContent)+1;
-    renderIssues();
-    showToast("Complaint submitted successfully.");
-});
-
-renderIssues();
 </script>
+
 
 </body>
 </html>
