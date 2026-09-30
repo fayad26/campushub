@@ -51,20 +51,50 @@
 <footer><p>© 2026 CampusHub. Built for a better campus.</p></footer>
 
 <script>
-document.getElementById("studentLoginForm").addEventListener("submit", function(event) {
+document.getElementById("studentLoginForm").addEventListener("submit", async function(event) {
     event.preventDefault();
+
     const username = document.getElementById("studentUsername").value.trim();
-    const password = document.getElementById("studentPassword").value.trim();
+    const password = document.getElementById("studentPassword").value;
     const error = document.getElementById("studentError");
+
+    error.textContent = "";
 
     if (!username || !password) {
         error.textContent = "Please enter both your username and password.";
         return;
     }
 
-    sessionStorage.setItem("campusHubStudentLoggedIn", "true");
-    sessionStorage.setItem("campusHubStudentName", username);
-    window.location.href = "issues.html";
+    try {
+        const response = await fetch("http://localhost:3000/api/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username: username,
+                password: password
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            error.textContent = data.message;
+            return;
+        }
+
+        // Login successful
+        sessionStorage.setItem("campusHubStudentLoggedIn", "true");
+        sessionStorage.setItem("campusHubStudentName", data.user.name);
+        sessionStorage.setItem("campusHubUsername", data.user.username);
+
+        window.location.href = "issues.html";
+
+    } catch (err) {
+        console.error(err);
+        error.textContent = "Unable to connect to CampusHub server.";
+    }
 });
 </script>
 </body>
