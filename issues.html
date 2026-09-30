@@ -1,0 +1,134 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusHub | Campus Issues</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">
+                🏫 CampusHub
+            </div>
+
+            <div class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="issues.html" class="active">
+                    Issues
+                </a>
+
+                <a href="report.html">
+                    Report
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="login.html" class="login-button">
+                    Login
+                </a>
+
+            </div>
+
+        </nav>
+    </header>
+
+
+    <!-- PAGE HEADER -->
+
+    <section class="issues-hero">
+
+        <div>
+
+            <p class="small-title">
+                CAMPUS ISSUE BOARD
+            </p>
+
+            <h1>
+                What's happening<br>
+                <span>around campus?</span>
+            </h1>
+
+            <p>
+                View reported campus problems and track what is
+                being reviewed, scheduled, worked on, or resolved.
+            </p>
+
+        </div>
+
+        <div class="issue-summary">
+
+            <div>
+                <strong>24</strong>
+                <span>Total Issues</span>
+            </div>
+
+            <div>
+                <strong>7</strong>
+                <span>In Progress</span>
+            </div>
+
+            <div>
+                <strong>12</strong>
+                <span>Resolved</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SEARCH + FILTER -->
+
+    <section class="issue-controls">
+
+        <div class="issue-search">
+
+            <span>⌕</span>
+
+            <input
+                type="text"
+                id="issueSearch"
+                placeholder="Search issues by title, location or issue number..."
+            >
+
+        </div>
+
+
+        <div class="issue-filters">
+
+            <button class="filter-button active-filter" onclick="filterIssues('all', this)">
+                All
+            </button>
+
+            <button class="filter-button" onclick="filterIssues('pending', this)">
+                Pending
+            </button>
+
+            <button class="filter-button" onclick="filterIssues('review', this)">
+                Under Review
+            </button>
+
+            <button class="filter-button" onclick="filterIssues('scheduled', this)">
+                Scheduled
+            </button>
+
+            <button class="filter-button" onclick="filterIssues('progress', this)">
+                In Progress
+```
