@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register - CampusHub</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* Registration-only styling */
+.register-link {
+    color: #526f5a;
+    font-weight: 600;
+}
+
+.auth-note {
+    margin: 16px 0 0;
+    text-align: center;
+    font-size: 14px;
+    color: #68736d;
+}
+
+.auth-note a {
+    color: #526f5a;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-note a:hover {
+    text-decoration: underline;
+}
+
+.auth-success {
+    color: #3f7350;
+    margin: 8px 0;
+    font-size: 14px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="logo">🏫 CampusHub</div>
+
+    <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="issues.html">Issues</a>
+        <a href="report.html">Report</a>
+        <a href="about.html">About</a>
+        <a href="login.html">Login</a>
+        <a href="register.html" class="register-link active">Register</a>
+    </nav>
+</header>
+
+<main class="auth-page">
+
+<section class="auth-card">
+
+    <p class="section-label">CAMPUSHUB ACCESS</p>
+
+    <h1>Student Registration</h1>
+
+    <p class="auth-subtitle">
+        Create your CampusHub student account.
+    </p>
+
+    <form id="studentRegisterForm">
+
+        <div class="auth-field">
+            <label for="studentName">Full Name</label>
+            <input
+                id="studentName"
+                type="text"
+                placeholder="Enter your full name"
+                required
+            >
+        </div>
+
+        <div class="auth-field">
+            <label for="studentUsername">Username</label>
+            <input
+                id="studentUsername"
+                type="text"
+                placeholder="Choose a username"
+                required
+            >
+        </div>
+
+        <div class="auth-field">
+            <label for="studentEmail">Email</label>
+            <input
+                id="studentEmail"
+                type="email"
+                placeholder="Enter your email"
+                required
+            >
+        </div>
+
+        <div class="auth-field">
+            <label for="studentPassword">Password</label>
+            <input
+                id="studentPassword"
+                type="password"
+                placeholder="Create a password"
+                required
+            >
+        </div>
+
+        <div class="auth-field">
+            <label for="studentConfirmPassword">Confirm Password</label>
+            <input
+                id="studentConfirmPassword"
+                type="password"
+                placeholder="Confirm your password"
+                required
+            >
+        </div>
+
+        <p id="registerError" class="auth-error"></p>
+        <p id="registerSuccess" class="auth-success"></p>
+
+        <button type="submit" class="primary-btn auth-submit">
+            Create Account
+        </button>
+
+    </form>
+
+    <p class="auth-note">
+        Already have an account?
+        <a href="login.html">Login here</a>
+    </p>
+
+    <div class="auth-divider">
+        <span>OR</span>
+    </div>
+
+    <a href="admin-login.html" class="admin-login-link">
+        <span>Admin Login</span>
+        <span>→</span>
+    </a>
+
+</section>
+
+</main>
+
+<footer>
+    <p>© 2026 CampusHub. Built for a better campus.</p>
+</footer>
+
+<script>
+document.getElementById("studentRegisterForm").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("studentName").value.trim();
+    const username = document.getElementById("studentUsername").value.trim();
+    const email = document.getElementById("studentEmail").value.trim();
+    const password = document.getElementById("studentPassword").value;
+    const confirmPassword = document.getElementById("studentConfirmPassword").value;
+
+    const error = document.getElementById("registerError");
+    const success = document.getElementById("registerSuccess");
+
+    error.textContent = "";
+    success.textContent = "";
+
+    if (password !== confirmPassword) {
+        error.textContent = "Passwords do not match.";
+        return;
+    }
+
+    if (password.length < 6) {
+        error.textContent = "Password must be at least 6 characters.";
+        return;
+    }
+
+    const students = JSON.parse(
+        localStorage.getItem("campusHubStudents") || "[]"
+    );
+
+    const usernameExists = students.some(function(student) {
+        return student.username.toLowerCase() === username.toLowerCase();
+    });
+
+    if (usernameExists) {
+        error.textContent = "This username is already registered.";
+        return;
+    }
+
+    const emailExists = students.some(function(student) {
+        return student.email.toLowerCase() === email.toLowerCase();
+    });
+
+    if (emailExists) {
+        error.textContent = "This email is already registered.";
+        return;
+    }
+
+    const newStudent = {
+        name: name,
+        username: username,
+        email: email,
+        password: password,
+        registeredAt: new Date().toISOString()
+    };
+
+    students.push(newStudent);
+
+    localStorage.setItem(
+        "campusHubStudents",
+        JSON.stringify(students)
+    );
+
+    success.textContent =
+        "Account created successfully! Redirecting to login...";
+
+    document.getElementById("studentRegisterForm").reset();
+
+    setTimeout(function() {
+        window.location.href = "login.html";
+    }, 1000);
+
+});
+</script>
+
+</body>
+</html>
