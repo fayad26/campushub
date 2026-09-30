@@ -1,13 +1,12 @@
 /* =========================================================
-   CAMPUSHUB
-   Professional Green + Black + White Theme
+   CAMPUSHUB — CLEANED STYLESHEET
+   Shared rules are defined once; page-specific rules are isolated.
 ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
 
-
 /* =========================================================
-   RESET
+   RESET + GLOBALS
 ========================================================= */
 
 * {
@@ -38,11 +37,6 @@ select {
     font-family: inherit;
 }
 
-
-/* =========================================================
-   COLORS
-========================================================= */
-
 :root {
     --green: #52745a;
     --green-dark: #3f5f47;
@@ -59,14 +53,15 @@ select {
 
     --border: #dfe6e0;
 
+    --yellow: #a47d28;
+    --yellow-light: #f6f0df;
+
+    --blue: #5c7180;
+    --blue-light: #edf2f4;
+
     --shadow-small: 0 3px 12px rgba(20, 35, 24, 0.05);
     --shadow: 0 10px 30px rgba(20, 35, 24, 0.08);
 }
-
-
-/* =========================================================
-   GLOBAL TYPOGRAPHY
-========================================================= */
 
 h1,
 h2,
@@ -76,15 +71,90 @@ h4 {
     color: var(--black);
 }
 
-.small-title {
+.small-title,
+.section-label {
     color: var(--green);
     font-size: 10px;
     font-weight: 700;
-    letter-spacing: 1.8px;
+    letter-spacing: 1.7px;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 11px;
 }
 
+/* The non-home pages use the existing slightly darker page background. */
+body:has(.issue-summary),
+body:has(#reportForm) {
+    background: #f6f8f6;
+}
+
+/* Shared header used by Issues and Report pages. */
+header {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.97);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+header nav {
+    max-width: 1280px;
+    height: 72px;
+    margin: auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header nav h1 {
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--black);
+    white-space: nowrap;
+}
+
+header nav > div {
+    display: flex;
+    align-items: center;
+    gap: 29px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #68736c;
+    font-size: 12px;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+header nav a:hover {
+    color: var(--green);
+}
+
+header nav a:last-child {
+    background: var(--black);
+    color: white;
+    padding: 9px 17px;
+    border-radius: 6px;
+}
+
+header nav a:last-child:hover {
+    background: var(--green);
+    color: white;
+}
+
+body:has(.issue-summary) header nav a:nth-child(2),
+body:has(#reportForm) header nav a:nth-child(3) {
+    color: var(--green);
+    font-weight: 700;
+}
+
+/* =========================================================
+   HOMEPAGE
+========================================================= */
 
 /* =========================================================
    NAVBAR
@@ -1056,198 +1126,17 @@ footer p {
         padding: 20px;
     }
 }
-/* =========================================================
-   CAMPUSHUB - ISSUES PAGE
-   Clean • Professional • Human-made
-========================================================= */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
 
 
 /* =========================================================
-   RESET
+   ISSUES PAGE
 ========================================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: "Inter", sans-serif;
-    background: #f6f8f6;
-    color: #18201b;
-    line-height: 1.6;
-}
-
-button,
-input,
-textarea,
-select {
-    font-family: inherit;
-}
-
-a {
-    color: inherit;
-}
-
-
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-:root {
-    --green: #52745a;
-    --green-dark: #3f5f47;
-    --green-light: #e8f0e9;
-
-    --black: #171e19;
-    --text: #3d4941;
-    --muted: #758079;
-
-    --white: #ffffff;
-
-    --background: #f6f8f6;
-
-    --border: #dfe6e0;
-
-    --yellow: #a47d28;
-    --yellow-light: #f6f0df;
-
-    --blue: #5c7180;
-    --blue-light: #edf2f4;
-
-    --shadow-small: 0 3px 12px rgba(20, 35, 24, 0.05);
-    --shadow: 0 10px 30px rgba(20, 35, 24, 0.08);
-}
-
-
-/* =========================================================
-   GLOBAL
-========================================================= */
-
-h1,
-h2,
-h3,
-h4 {
-    font-family: "Poppins", sans-serif;
-    color: var(--black);
-}
-
-.section-label {
-    color: var(--green);
-
-    font-size: 10px;
-    font-weight: 700;
-
-    letter-spacing: 1.7px;
-    text-transform: uppercase;
-
-    margin-bottom: 11px;
-}
-
-
-/* =========================================================
-   NAVBAR
-========================================================= */
-
-header {
-    width: 100%;
-
-    background: rgba(255, 255, 255, 0.97);
-
-    border-bottom: 1px solid var(--border);
-
-    position: sticky;
-    top: 0;
-
-    z-index: 1000;
-
-    backdrop-filter: blur(10px);
-}
-
-header nav {
-    max-width: 1280px;
-
-    height: 72px;
-
-    margin: auto;
-
-    padding: 0 32px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-}
-
-header nav h1 {
-    font-family: "Poppins", sans-serif;
-
-    font-size: 20px;
-    font-weight: 700;
-
-    color: var(--black);
-
-    white-space: nowrap;
-}
-
-header nav > div {
-    display: flex;
-
-    align-items: center;
-
-    gap: 29px;
-}
-
-header nav a {
-    text-decoration: none;
-
-    color: #68736c;
-
-    font-size: 12px;
-    font-weight: 500;
-
-    transition: 0.2s ease;
-}
-
-header nav a:hover {
-    color: var(--green);
-}
-
-header nav a:nth-child(2) {
-    color: var(--green);
-
-    font-weight: 700;
-}
-
-header nav a:last-child {
-    background: var(--black);
-
-    color: white;
-
-    padding: 9px 17px;
-
-    border-radius: 6px;
-}
-
-header nav a:last-child:hover {
-    background: var(--green);
-
-    color: white;
-}
-
 
 /* =========================================================
    HERO
 ========================================================= */
 
-.issues-hero {
+body:has(.issue-summary) .issues-hero {
     background:
         radial-gradient(
             circle at 85% 30%,
@@ -1261,13 +1150,13 @@ header nav a:last-child:hover {
     padding: 82px 32px;
 }
 
-.issues-hero-content {
+body:has(.issue-summary) body:has(.issue-summary) .issues-hero-content {
     max-width: 1120px;
 
     margin: auto;
 }
 
-.issues-hero h2 {
+body:has(.issue-summary) body:has(.issue-summary) .issues-hero h2 {
     max-width: 720px;
 
     font-size: 46px;
@@ -1279,7 +1168,7 @@ header nav a:last-child:hover {
     margin-bottom: 17px;
 }
 
-.issues-hero-content > p:last-child {
+body:has(.issue-summary) body:has(.issue-summary) body:has(.issue-summary) .issues-hero-content > p:last-child {
     max-width: 590px;
 
     color: #657169;
@@ -1486,7 +1375,7 @@ header nav a:last-child:hover {
     padding: 18px 0 90px;
 }
 
-.section-heading {
+body:has(.issue-summary) .section-heading {
     display: flex;
 
     justify-content: space-between;
@@ -1498,7 +1387,7 @@ header nav a:last-child:hover {
     margin-bottom: 23px;
 }
 
-.section-heading h2 {
+body:has(.issue-summary) .section-heading h2 {
     font-size: 30px;
 
     line-height: 1.2;
@@ -1914,7 +1803,7 @@ header nav a:last-child:hover {
    BOTTOM CTA
 ========================================================= */
 
-.issues-cta {
+body:has(.issue-summary) .issues-cta {
     background: var(--black);
 
     color: white;
@@ -1930,11 +1819,11 @@ header nav a:last-child:hover {
     gap: 35px;
 }
 
-.issues-cta .section-label {
+body:has(.issue-summary) body:has(.issue-summary) .issues-cta .section-label {
     color: #a7c2ac;
 }
 
-.issues-cta h2 {
+body:has(.issue-summary) body:has(.issue-summary) .issues-cta h2 {
     color: white;
 
     font-size: 31px;
@@ -1944,13 +1833,13 @@ header nav a:last-child:hover {
     margin-bottom: 8px;
 }
 
-.issues-cta p:not(.section-label) {
+body:has(.issue-summary) body:has(.issue-summary) .issues-cta p:not(.section-label) {
     color: #adb6af;
 
     font-size: 12px;
 }
 
-.issues-cta .primary-btn {
+body:has(.issue-summary) body:has(.issue-summary) .issues-cta .primary-btn {
     background: white;
 
     color: var(--black);
@@ -1958,7 +1847,7 @@ header nav a:last-child:hover {
     border-color: white;
 }
 
-.issues-cta .primary-btn:hover {
+body:has(.issue-summary) body:has(.issue-summary) body:has(.issue-summary) .issues-cta .primary-btn:hover {
     background: var(--green-light);
 
     border-color: var(--green-light);
@@ -1971,7 +1860,7 @@ header nav a:last-child:hover {
    FOOTER
 ========================================================= */
 
-footer {
+body:has(.issue-summary) footer {
     background: #101511;
 
     color: #7f8982;
@@ -1983,7 +1872,7 @@ footer {
     border-top: 1px solid #202720;
 }
 
-footer p {
+body:has(.issue-summary) footer p {
     font-size: 10px;
 }
 
@@ -2031,11 +1920,11 @@ footer p {
         justify-content: center;
     }
 
-    .issues-hero {
+    body:has(.issue-summary) .issues-hero {
         padding: 65px 25px;
     }
 
-    .issues-hero h2 {
+    body:has(.issue-summary) body:has(.issue-summary) .issues-hero h2 {
         font-size: 39px;
     }
 
@@ -2061,7 +1950,7 @@ footer p {
         border-right: none;
     }
 
-    .issues-cta {
+    body:has(.issue-summary) .issues-cta {
         padding: 55px 25px;
 
         flex-direction: column;
@@ -2089,17 +1978,17 @@ footer p {
         padding: 8px 13px;
     }
 
-    .issues-hero {
+    body:has(.issue-summary) .issues-hero {
         padding: 55px 20px;
     }
 
-    .issues-hero h2 {
+    body:has(.issue-summary) body:has(.issue-summary) .issues-hero h2 {
         font-size: 32px;
 
         letter-spacing: -0.8px;
     }
 
-    .issues-hero-content > p:last-child {
+    body:has(.issue-summary) body:has(.issue-summary) body:has(.issue-summary) .issues-hero-content > p:last-child {
         font-size: 12px;
     }
 
@@ -2129,13 +2018,13 @@ footer p {
         margin-right: 15px;
     }
 
-    .section-heading {
+    body:has(.issue-summary) .section-heading {
         flex-direction: column;
 
         align-items: flex-start;
     }
 
-    .section-heading h2 {
+    body:has(.issue-summary) .section-heading h2 {
         font-size: 27px;
     }
 
@@ -2159,194 +2048,21 @@ footer p {
         overflow: hidden;
     }
 
-    .issues-cta h2 {
+    body:has(.issue-summary) body:has(.issue-summary) .issues-cta h2 {
         font-size: 26px;
     }
 }
-/* =========================================================
-   CAMPUSHUB - REPORT PAGE
-   Professional • Clean • Green + Black + White
-========================================================= */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
 
 
 /* =========================================================
-   RESET
+   REPORT PAGE
 ========================================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: "Inter", sans-serif;
-    background: #f6f8f6;
-    color: #18201b;
-    line-height: 1.6;
-}
-
-button,
-input,
-textarea,
-select {
-    font-family: inherit;
-}
-
-a {
-    color: inherit;
-}
-
-
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-:root {
-    --green: #52745a;
-    --green-dark: #3f5f47;
-    --green-light: #e8f0e9;
-
-    --black: #171e19;
-    --text: #3d4941;
-    --muted: #758079;
-
-    --white: #ffffff;
-
-    --background: #f6f8f6;
-
-    --border: #dfe6e0;
-
-    --shadow-small: 0 3px 12px rgba(20, 35, 24, 0.05);
-    --shadow: 0 12px 35px rgba(20, 35, 24, 0.08);
-}
-
-
-/* =========================================================
-   NAVBAR
-========================================================= */
-
-header {
-    width: 100%;
-
-    background: rgba(255, 255, 255, 0.97);
-
-    border-bottom: 1px solid var(--border);
-
-    position: sticky;
-    top: 0;
-
-    z-index: 1000;
-
-    backdrop-filter: blur(10px);
-}
-
-header nav {
-    max-width: 1280px;
-
-    height: 72px;
-
-    margin: auto;
-
-    padding: 0 32px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-}
-
-header nav h1 {
-    font-family: "Poppins", sans-serif;
-
-    font-size: 20px;
-
-    font-weight: 700;
-
-    color: var(--black);
-
-    white-space: nowrap;
-}
-
-header nav > div {
-    display: flex;
-
-    align-items: center;
-
-    gap: 29px;
-}
-
-header nav a {
-    text-decoration: none;
-
-    color: #68736c;
-
-    font-size: 12px;
-
-    font-weight: 500;
-
-    transition: 0.2s ease;
-}
-
-header nav a:hover {
-    color: var(--green);
-}
-
-/* Report is the current page */
-header nav a:nth-child(3) {
-    color: var(--green);
-
-    font-weight: 700;
-}
-
-header nav a:last-child {
-    background: var(--black);
-
-    color: white;
-
-    padding: 9px 17px;
-
-    border-radius: 6px;
-}
-
-header nav a:last-child:hover {
-    background: var(--green);
-
-    color: white;
-}
-
-
-/* =========================================================
-   GLOBAL LABEL
-========================================================= */
-
-.section-label {
-    color: var(--green);
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    letter-spacing: 1.7px;
-
-    text-transform: uppercase;
-
-    margin-bottom: 11px;
-}
-
 
 /* =========================================================
    HERO
 ========================================================= */
 
-.issues-hero {
+body:has(#reportForm) .issues-hero {
     background:
         radial-gradient(
             circle at 85% 30%,
@@ -2360,13 +2076,13 @@ header nav a:last-child:hover {
     padding: 85px 32px;
 }
 
-.issues-hero-content {
+body:has(#reportForm) body:has(#reportForm) .issues-hero-content {
     max-width: 900px;
 
     margin: auto;
 }
 
-.issues-hero h2 {
+body:has(#reportForm) body:has(#reportForm) .issues-hero h2 {
     max-width: 700px;
 
     font-family: "Poppins", sans-serif;
@@ -2382,7 +2098,7 @@ header nav a:last-child:hover {
     margin-bottom: 17px;
 }
 
-.issues-hero-content > p:last-child {
+body:has(#reportForm) body:has(#reportForm) body:has(#reportForm) .issues-hero-content > p:last-child {
     max-width: 560px;
 
     color: #657169;
@@ -2632,7 +2348,7 @@ header nav a:last-child:hover {
    TRANSPARENCY CTA
 ========================================================= */
 
-.issues-cta {
+body:has(#reportForm) .issues-cta {
     background: var(--black);
 
     color: white;
@@ -2648,15 +2364,15 @@ header nav a:last-child:hover {
     text-align: center;
 }
 
-.issues-cta > div {
+body:has(#reportForm) body:has(#reportForm) .issues-cta > div {
     max-width: 650px;
 }
 
-.issues-cta .section-label {
+body:has(#reportForm) body:has(#reportForm) .issues-cta .section-label {
     color: #a7c2ac;
 }
 
-.issues-cta h2 {
+body:has(#reportForm) body:has(#reportForm) .issues-cta h2 {
     color: white;
 
     font-family: "Poppins", sans-serif;
@@ -2668,7 +2384,7 @@ header nav a:last-child:hover {
     margin-bottom: 9px;
 }
 
-.issues-cta p:not(.section-label) {
+body:has(#reportForm) body:has(#reportForm) .issues-cta p:not(.section-label) {
     color: #adb6af;
 
     font-size: 12px;
@@ -2681,7 +2397,7 @@ header nav a:last-child:hover {
    FOOTER
 ========================================================= */
 
-footer {
+body:has(#reportForm) footer {
     background: #101511;
 
     color: #7f8982;
@@ -2693,7 +2409,7 @@ footer {
     border-top: 1px solid #202720;
 }
 
-footer p {
+body:has(#reportForm) footer p {
     font-size: 10px;
 }
 
@@ -2737,11 +2453,11 @@ footer p {
         justify-content: center;
     }
 
-    .issues-hero {
+    body:has(#reportForm) .issues-hero {
         padding: 65px 25px;
     }
 
-    .issues-hero h2 {
+    body:has(#reportForm) body:has(#reportForm) .issues-hero h2 {
         font-size: 40px;
     }
 
@@ -2773,17 +2489,17 @@ footer p {
         padding: 8px 13px;
     }
 
-    .issues-hero {
+    body:has(#reportForm) .issues-hero {
         padding: 55px 20px;
     }
 
-    .issues-hero h2 {
+    body:has(#reportForm) body:has(#reportForm) .issues-hero h2 {
         font-size: 33px;
 
         letter-spacing: -0.8px;
     }
 
-    .issues-hero-content > p:last-child {
+    body:has(#reportForm) body:has(#reportForm) body:has(#reportForm) .issues-hero-content > p:last-child {
         font-size: 12px;
     }
 
@@ -2814,11 +2530,11 @@ footer p {
         min-height: 130px;
     }
 
-    .issues-cta {
+    body:has(#reportForm) .issues-cta {
         padding: 55px 22px;
     }
 
-    .issues-cta h2 {
+    body:has(#reportForm) body:has(#reportForm) .issues-cta h2 {
         font-size: 26px;
     }
 }
@@ -2826,7 +2542,7 @@ footer p {
 
 @media (max-width: 380px) {
 
-    .issues-hero h2 {
+    body:has(#reportForm) body:has(#reportForm) .issues-hero h2 {
         font-size: 30px;
     }
 
@@ -2838,3 +2554,4 @@ footer p {
         padding: 35px 20px;
     }
 }
+
